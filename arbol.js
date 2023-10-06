@@ -49,30 +49,32 @@ nodoActual = nodoActual.derecha;
 }
 }
 }
+encontrarCoincidecia(valor){
+ const coincidencia = []; 
 
-// Función para la búsqueda
-buscar(valor) {
-// Se inicia la búsqueda en la raíz
-let nodoActual = this.raiz;
+  this.encontrarCoincidenciaArbol(this.raiz, valor, coincidencias);
+  return coincidencia;
+}
 
-// Recorre el árbol hasta que se encuentre una coincidencia
-while (nodoActual !== null) {
-// Si encuentras el valor, retorna
-if (valor === nodoActual.valor) {
-return true;
+encontrarCoincidencia(nodo, valor, coincidencias){
+if(nodo === null){
+return;
 }
-// Si el valor es mayor ve al sub-árbol izquierdo
-else if (valor < nodoActual.valor) {
-nodoActual = nodoActual.izquierda;
+
+if( valor === nodo.valor){
+  coincidencia.push(nodo.valor);
 }
-// Si el valor es mayor ve al sub-árbol derecho
-else {
-nodoActual = nodoActual.derecha;
+
+if (valor <= nodo.valor){
+  this.encontrarCoincidencia(nodo.izquierdo, valor, coincidencia);
+}    
+
+if(valor >= nodo.valor){
+this.encontrarCoincidencias(nodo.derecha, valor, coincidencia);)
 }
+  
 }
-// Si no se encuentra el valor retorna un falso
-return false;
-}
+  
 }
 
 // Ejemplo de uso
